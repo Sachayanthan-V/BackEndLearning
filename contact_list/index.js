@@ -12,8 +12,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded());
 app.use(express.static('assets'));
 
-
-
+/*
 var contactList = [
     {
         name: "Arpan",
@@ -28,6 +27,8 @@ var contactList = [
         phone: "12131321321"
     }
 ]
+*/
+
 
 app.get('/practice', function(req, res){
     return res.render('practice', {
@@ -38,14 +39,26 @@ app.get('/practice', function(req, res){
 
 app.get('/', function(req, res){
 
-    return res.render('home',{
-        title: "Contact List",
-        contact_list: contactList
+    Contact.find( {}, function(err, contacts){
+        if (err) {
+            console.log("Error is occured in DB when trying to get the data");
+            return;
+        } 
+
+        return res.render('home', {   
+            title: "Contact List",
+            contact_list: contacts
+        });
+ 
     });
-})
+
+});
+
+
 app.post('/create-contact', function(req, res){
     
-     
+    // Contact.findOneAndUpdate({},{},(err, result){})  
+
     Contact.create({
         name: req.body.name,
         phone: req.body.phone 
@@ -54,28 +67,42 @@ app.post('/create-contact', function(req, res){
             return;}
             console.log('******', newContact);
             return res.redirect('back');
-    });
+    }); 
   
-
 });
+
 
 app.listen(port, function(err){
     if (err) {
         console.log("Error in running the server", err);
+        return;
     }
     console.log('Yup!My Server is running on Port', port);
 })
 
 
-app.get('/delete-contact/', function(req, res){
-    console.log(req.query);
-    let phone = req.query.phone
+app.get('/delete-contact', function(req, res){
 
-    let contactindex = contactList.findIndex(contact => contact.phone == phone);
+    let id = req.query.id;
+ 
 
-    if(contactindex != -1){
-        contactList.splice(contactindex, 1);
-    }
+    // Contact.findByIdAndRemove(id, );
 
-    return res.redirect('back');
+    
+
+
+    Contact.findByIdAndDelete(id, {}, function(err){
+
+
+        if (err) {
+            console.log("Error in deleting the contact in DB>>>>");
+            return;
+        }
+
+        console.log("Successful");
+
+        return res.redirect('back');
+
+    });
+
 });
