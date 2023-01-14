@@ -18,7 +18,7 @@ app.use(cookieParser());
 app.use(express.static("./assets"));
  
 app.use(expresslayouts);
-app.set("layout extractStyles", true);
+app.set("layout extractStyles", true); 
 app.set("layout extractScripts", true);
 
 app.set("view engine", "ejs"); 
