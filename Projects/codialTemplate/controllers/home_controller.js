@@ -1,10 +1,30 @@
 const userSchema = require("../models/user");
+const Post = require('../models/post');
+
 
 module.exports.home = function (req, res) {
 
-  res.cookie('user_id', 23);
-  console.log(req.cookies);
+  // res.cookie('user_id', 23);
+  // console.log(req.cookies);
 
+  // Post.find( {}, function (err, posts) {
+  
+  //   return res.render("home", {
+  //     title: "sachin's application.",
+  //     posts : posts
+  //   });
+
+  // }); 
+
+  Post.find({}).populate('user').exec(function(err, posts){
+    return res.render('home', {
+      title : `Sachin's App`,  
+      posts: posts
+    })
+  })
+
+
+  /*
   userSchema.find({}, function (err, content) {
     if (err) {
       console.log(
@@ -17,4 +37,7 @@ module.exports.home = function (req, res) {
       title: "sachin's application."
     });
   });
+  */
+
+
 };
