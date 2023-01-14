@@ -1,3 +1,4 @@
+const passport = require('passport');
 const User = require('../models/user');
 
 module.exports.profile = function(req, res) {
@@ -7,18 +8,37 @@ module.exports.profile = function(req, res) {
 };
 
 module.exports.signUp = function(req, res) {
+
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
+
     return res.render('user_sign_up', {
         title : "codial sign up"
     });
 }
 
+// module.exports.signOut = function(req, res) {
+//     req.logout();
+//     return res.redirect('/');
+// }
+
+module.exports.destroySession = function(req, res) {
+    req.logout( function(err){ console.log('Logout Error : ', err) } );
+    return res.redirect('/');
+}
+
 module.exports.signIn = function(req, res) {
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
+    
     return res.render('user_sign_in', {
         title : "codial sign in"
     });
 }
 
-// for sign in and sign up//
+// for sign in and sign up 
 
 module.exports.create = function(req, res) {
     if ( req.body.password != req.body.confirm_password ) {
@@ -51,7 +71,5 @@ module.exports.create = function(req, res) {
 }
 
 module.exports.createSession = function(req, res) {
-    // create it later.
-    // checking a git
-    // is it really works ?
+    return res.redirect('/');
 }

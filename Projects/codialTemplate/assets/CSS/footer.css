@@ -1,4 +1,21 @@
-body {
-    background-color: pink;
+footer {
+    margin-bottom: 10px;
+    width: 100vw;
+    height: 5vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
+li {
+    margin-left: 10px;
+    min-width: 25px;
+    font-size: 15px;
+    font-weight: 400;
+    color: white;
+}
+a{
+    text-decoration: none;
+    color: whitesmoke;
+}
+
 

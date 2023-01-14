@@ -5,21 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> <%= title  %>  </title>
-    <link rel="stylesheet" href="./CSS/home.css">
-    <%- style %> 
+    <link rel="stylesheet" href="./css/home.css"> 
+
+    
+    <%- style %>
+
 </head>
 <body>
     
-    <!-- <h1> <%= title  %> is rendered </h1> -->
 
-    <%- include('_header') %> 
+    <%- include('_header'); %> 
 
-    <%- body %> 
+    <main>
+        <%- body %> 
+    </main>
 
-    <%- include('_footer') %> 
+    <%- include('_footer'); %> 
     
     
-    <%- script %> 
+    <%- script %>
 
 </body>
 </html>
