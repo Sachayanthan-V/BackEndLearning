@@ -18,6 +18,17 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: scroll;
+}
+
+main::-webkit-scrollbar {
+    display: none;
+}
+
+main section {
+    margin-top: 100px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 footer{

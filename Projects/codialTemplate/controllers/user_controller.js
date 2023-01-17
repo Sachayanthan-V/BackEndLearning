@@ -18,11 +18,6 @@ module.exports.signUp = function(req, res) {
     });
 }
 
-// module.exports.signOut = function(req, res) {
-//     req.logout();
-//     return res.redirect('/');
-// }
-
 module.exports.destroySession = function(req, res) {
     req.logout( function(err){ console.log('Logout Error : ', err) } );
     return res.redirect('/');
