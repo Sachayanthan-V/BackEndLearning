@@ -34,3 +34,13 @@ main section {
 footer{
     background-color: #212121;
 }
+
+small a {
+    text-decoration: none;
+    font-size: 10px;
+    padding: 4px;
+    border-radius: 2px;
+    background-color: red;
+    color: white;
+    font-weight: 600;
+}

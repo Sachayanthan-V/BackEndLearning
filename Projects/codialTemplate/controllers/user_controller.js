@@ -2,10 +2,39 @@ const passport = require('passport');
 const User = require('../models/user');
 
 module.exports.profile = function(req, res) {
-    return res.render('user_profile', {
-        title : 'user profile page'
+
+    User.findById(req.params.id, function(err, user) {
+        return res.render('user_profile', {
+            title: 'User Profile',
+            profile_user : user
+        });
+    });
+
+    // return res.render('user_profile', {
+    //     title : 'user profile page'
+    // });
+};
+
+module.exports.profileMine = function(req, res) {
+
+    return res.render('my_profile', {
+        title : 'My Profile'
     });
 };
+
+
+module.exports.update = function(req, res) {
+    if(req.user.id == req.params.id) {
+        User.findByIdAndUpdate( req.params.id, req.body, function(err, user){
+            if(err) {console.log('Error updating profile'); return res.redirect('back');}
+            console.log('Profile Updated');
+            return res.redirect('back');
+        });
+    }
+    else {
+        return res.status(401).send('Unauthorized');
+    }
+}
 
 module.exports.signUp = function(req, res) {
 
