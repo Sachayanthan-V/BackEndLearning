@@ -47,10 +47,7 @@ module.exports.signUp = function(req, res) {
     });
 }
 
-module.exports.destroySession = function(req, res) {
-    req.logout( function(err){ console.log('Logout Error : ', err) } );
-    return res.redirect('/');
-}
+
 
 module.exports.signIn = function(req, res) {
     if(req.isAuthenticated()){
@@ -95,5 +92,14 @@ module.exports.create = function(req, res) {
 }
 
 module.exports.createSession = function(req, res) {
+    req.flash('success', 'Logged in successfully');
+    return res.redirect('/');
+}
+
+
+module.exports.destroySession = function(req, res) {
+    req.flash('success', 'Logged out successfully');
+    req.logout( function(err){ console.log('Logout Error : ', err) } );
+    // req.session.destroy();
     return res.redirect('/');
 }

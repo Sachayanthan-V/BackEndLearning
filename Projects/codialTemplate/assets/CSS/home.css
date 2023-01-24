@@ -16,8 +16,8 @@ main{
     color: white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
     overflow: scroll;
 }
 
@@ -43,4 +43,18 @@ small a {
     background-color: red;
     color: white;
     font-weight: 600;
+}
+
+#flashMessage {
+    position: absolute;
+    top: 50px;
+    left: auto;
+    right: 20px;
+    width: 300px;
+    text-align: center;
+    padding: 10px;
+    background-color: rgb(18, 27, 67);
+    color: white;
+    font-weight: 600;
+    border-radius: 10px;
 }

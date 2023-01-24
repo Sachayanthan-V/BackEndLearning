@@ -2,7 +2,44 @@ const Post = require('../models/post');
 const User = require('../models/user');
 
 
-module.exports.home = function (req, res) {
+module.exports.home = async function (req, res) {
+
+	try {
+		
+		let posts = await Post.find({})
+			.populate('user')
+			.populate({
+			path : 'comments',
+			populate : {
+				path : 'user'
+			}
+		});
+
+		let users = await User.find({});
+
+		return res.render('home', {
+			title : `Sachin's App`,  
+			posts: posts,
+			all_users : users
+		});
+
+	}catch(err){
+		console.log(`Error occured on HomeController ${err}`);
+	}
+
+
+};
+
+
+
+
+
+
+
+
+
+
+/*
 
   // res.cookie('user_id', 23);
   // console.log(req.cookies);
@@ -16,28 +53,7 @@ module.exports.home = function (req, res) {
 
   // }); 
 
-  Post.find({})
-    .populate('user')
-    .populate({
-      path : 'comments',
-      populate : {
-        path : 'user'
-      }
-    })
-    .exec(function(err, posts){
-      
-      User.find( {}, function(err, users) {
-        return res.render('home', {
-          title : `Sachin's App`,  
-          posts: posts,
-          all_users : users
-        });
-      });
 
-  });
-
-
-  /*
   userSchema.find({}, function (err, content) {
     if (err) {
       console.log(
@@ -51,6 +67,3 @@ module.exports.home = function (req, res) {
     });
   });
   */
-
-
-};

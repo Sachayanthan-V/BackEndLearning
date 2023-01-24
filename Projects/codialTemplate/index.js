@@ -12,6 +12,8 @@ const routes = require("./routes");
 const User = require("./models/user");
 const MongoStore = require("connect-mongo");
 // const MongoStore = require('connect-mongodb-session')(session);
+const flash = require('connect-flash');
+const customMware = require('./config/middleware');
 
 app.use(express.urlencoded());
 app.use(cookieParser());
@@ -53,6 +55,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
+app.use(flash());
+app.use(customMware.setFlash);
 app.use("/", routes);
 
 app.listen(port, function (error) {

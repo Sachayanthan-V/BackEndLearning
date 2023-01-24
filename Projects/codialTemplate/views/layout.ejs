@@ -6,14 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> <%= title  %>  </title>
     <link rel="stylesheet" href="./css/home.css"> 
-
     <%- style %>
+    <link rel="stylesheet" href="./css/post.css">
 
 </head>
 <body>
     
-
     <%- include('_header'); %> 
+
+    <% if(flash.success && flash.success.length > 0) {%>
+        <h5 id="flashMessage"> 
+            <%= flash.success %> 
+        </h5>
+    <% } %> 
 
     <main>
         <%- body %> 
