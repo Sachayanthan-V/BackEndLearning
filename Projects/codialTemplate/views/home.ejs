@@ -16,7 +16,7 @@
             </button>
 
             <div id="createpostform">
-                <form id="postForm" action="/posts/create" id="new-post-form" method="post">
+                <form  action="/posts/create" id="new-post-form" method="post">
                     <textarea id="postContentInput" type="text" name="content" cols="30" rows="3" placeholder="To create post Type here.." required></textarea>
                     <input id="postContentSubmit" type="submit" value="Post">
                 </form>
@@ -47,4 +47,6 @@
             <a href="/users/profile/<%= u.id %>"><%=u.name%></a>
         </p>
     <% } %> 
-</section>
+</section> 
+
+<script src="/js/home_posts.js"></script>

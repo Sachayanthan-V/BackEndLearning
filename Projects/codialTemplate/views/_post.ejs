@@ -1,11 +1,11 @@
-<li class="postLi"> 
+<li id="post-<%= post._id %> " class="postLi"> 
     <div class="postheader">
         <div class="userDetails">
-            <img src="./Images/autodraw 1_17_2023-1-removebg-preview.jpg" alt="">
+            <!-- <img src="./Images/autodraw 1_17_2023-1-removebg-preview.jpg" alt=""> -->
             <h1> <%= post.user.name %>  </h1>
         </div>
         <% if( locals.user && (locals.user.id == post.user.id) ) { %> 
-            <a class="DeletePost" href="/posts/destroy/<%= post.id %>">Delete</a>
+            <a class="DeletePost delete-post-btn" href="/posts/destroy/<%= post.id %>">Delete</a>
         <% } %> 
     </div>
     
@@ -34,4 +34,4 @@
             </div>
         <% } %>
     </div>
-</li>
+</li> 
