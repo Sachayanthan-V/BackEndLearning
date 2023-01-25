@@ -1,4 +1,4 @@
-* {
+/* * {
     margin: 0px;
     padding: 0px;
     font-family: serif;
@@ -381,4 +381,4 @@
   
   body::-webkit-scrollbar {
     display: none;
-  }/*# sourceMappingURL=design.css.map */   
+  }/*# sourceMappingURL=design.css.map */   /* */

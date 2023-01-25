@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
-const port = 8000;
+const port = 8001;
 const expresslayouts = require("express-ejs-layouts");
 const db = require("./config/mongoose");
 // used for session cookies
@@ -26,31 +26,19 @@ app.set("layout extractScripts", true);
 app.set("view engine", "ejs"); 
 app.set("views", "./views");
  
-app.use(
-  session({
+app.use( session({
     name: "codial",
-    // TODO change the secret before deployment in production mode
     secret: "blahsomething",
     saveUninitialized: false,
     resave: false,
-    cookie: {
-      maxAge: 1000 * 60 * 100,
-    },
-
-    store: MongoStore.create(
-      {
-        mongoUrl: "mongodb://127.0.0.1:27017/codial",
-        autoremove: "disabled",
-      },
-      function (err) {
-        console.log(
-          "error at mongo store",
-          err || "connection established to store cookie"
-        );
-      }
-    ),
-  })
-);
+    cookie: { maxAge: 1000 * 60 * 100 },
+    store: MongoStore.create({
+          mongoUrl: "mongodb://127.0.0.1:27017/codial",
+          autoremove: "disabled",
+        },
+          function (err) { console.log("error at mongo store", err || "connection established to store cookie" ); }
+        ),
+}));
 
 app.use(passport.initialize());
 app.use(passport.session());

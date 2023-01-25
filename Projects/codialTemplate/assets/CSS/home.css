@@ -1,4 +1,4 @@
-*{
+/* *{
     margin: 0px;
     padding: 0px;
 }
@@ -16,8 +16,6 @@ main{
     color: white;
     display: flex;
     flex-direction: column;
-    /* justify-content: center;
-    align-items: center; */
     overflow: scroll;
 }
 
@@ -57,4 +55,8 @@ small a {
     color: white;
     font-weight: 600;
     border-radius: 10px;
+} */
+
+img { 
+    width: 50px;
 }

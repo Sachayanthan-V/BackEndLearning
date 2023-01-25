@@ -9,10 +9,7 @@ module.exports.profile = function(req, res) {
             profile_user : user
         });
     });
-
-    // return res.render('user_profile', {
-    //     title : 'user profile page'
-    // });
+    
 };
 
 module.exports.profileMine = function(req, res) {
