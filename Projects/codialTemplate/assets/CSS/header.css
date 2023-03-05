@@ -1,4 +1,4 @@
-/* #nav {
+#nav {
     position: static;
     top: 0px;
     min-height: 8vh;
@@ -53,4 +53,4 @@
   #nav #navbtns a {
     text-decoration: none;
     color: white;
-  } */
+  }
